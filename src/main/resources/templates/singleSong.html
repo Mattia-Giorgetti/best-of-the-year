@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:text="${song.getTitle}"></title>
+    <title th:text="${song.getTitle()}"></title>
 </head>
 <body>
-<h1 th:text="${song.getTitle}"></h1>
-<h2 th:text=" 'Questa canzone ha ID: ' + ${song.getId}"></h2>
+<h1 th:text="${song.getTitle()}"></h1>
+<h2 th:text=" 'Questa canzone ha ID: ' + ${song.getId()}"></h2>
 </body>
 </html>

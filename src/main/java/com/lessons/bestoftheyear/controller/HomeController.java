@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/")
@@ -45,11 +46,7 @@ public class HomeController {
     @GetMapping("/movies")
     public String movies(Model model){
         List<Movie> bestmovies = getBestMovies();
-        String movieList = "";
-        for(Movie m:bestmovies){
-            movieList += m.getTitle() + ", ";
-        }
-        movieList = movieList.substring(0,movieList.length()-2);
+        String movieList = bestmovies.stream().map(Movie::getTitle).collect(Collectors.joining(", "));
         model.addAttribute("movieslist",movieList);
         return "movies";
     }
@@ -57,11 +54,7 @@ public class HomeController {
     @GetMapping("/songs")
     public String songs(Model model){
         List<Song> bestsongs = getBestSongs();
-        String songList = "";
-        for (Song s : bestsongs){
-            songList += s.getTitle() + ", ";
-        }
-        songList = songList.substring(0,songList.length()-2);
+        String songList = bestsongs.stream().map(Song::getTitle).collect(Collectors.joining(", "));
         model.addAttribute("songslist", songList);
         return "songs";
     }
