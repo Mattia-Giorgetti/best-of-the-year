@@ -65,7 +65,11 @@ public class HomeController {
     public String movieDetails(Model model, @PathVariable int id){
         List<Movie> bestmovies = getBestMovies();
         Optional<Movie> movie = bestmovies.stream().filter((m) -> m.getId() == id).findFirst();
-        model.addAttribute("movie",  movie.get());
+        if(movie.isEmpty()){
+            return "redirect:/movies";
+        } else {
+            model.addAttribute("movie",  movie.get());
+        }
         return "singleMovie";
     }
 
@@ -73,7 +77,11 @@ public class HomeController {
     public String songDetails(Model model, @PathVariable int id){
         List<Song> bestsongs = getBestSongs();
         Optional<Song> song = bestsongs.stream().filter((s) -> s.getId() == id).findFirst();
-        model.addAttribute("song", song.get());
+        if (song.isEmpty()){
+            return "redirect:/songs";
+        } else {
+            model.addAttribute("song", song.get());
+        }
         return "singleSong";
     }
 
