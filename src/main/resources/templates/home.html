@@ -5,9 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:replace="~{fragments :: head_links}">
     <title>Best of the Year</title>
 </head>
 <body>
-    <h1>Best of the year by <span th:text="${name}"></span> </h1>
+<nav th:replace="~{fragments :: navbar('home')}"></nav>
+    <div class="mt-5 container-fluid d-flex flex-column justify-content-between align-items-center gap-4">
+        <h1 class="text-white">Best of the year by <span th:text="${name}"></span> </h1>
+        <div class="w-50">
+            <img th:src="@{/GigaChad.webp}" alt="pic" class="img-fluid rounded-3">
+        </div>
+        <p class="w-50 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, suscipit blanditiis! Tenetur, explicabo repellendus necessitatibus quaerat quia placeat vel tempore recusandae nam itaque minima aperiam dignissimos est quam, ab voluptates aspernatur deserunt non ipsa quis sint porro. Explicabo, obcaecati eum.</p>
+    </div>
 </body>
 </html>

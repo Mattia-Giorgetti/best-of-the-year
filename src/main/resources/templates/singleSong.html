@@ -5,10 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:replace="~{fragments :: head_links}">
     <title th:text="${song.getTitle()}"></title>
 </head>
 <body>
-<h1 th:text="${song.getTitle()}"></h1>
-<h2 th:text=" 'Questa canzone ha ID: ' + ${song.getId()}"></h2>
+<nav th:replace="~{fragments :: navbar('singleSong')}"></nav>
+<div class="h-100 pt-5">
+    <h1 th:text="${song.getTitle()}" class="text-center mb-5 detail_title"></h1>
+    <h2 class="text-center mb-5"> Questo brano ha ID: <span class="text-warning">[[${song.getId()}]]</span></h2>
+    <button th:replace="~{fragments :: button(link = '/songs', content = 'Back to Songs')}"></button>
+</div>
 </body>
 </html>

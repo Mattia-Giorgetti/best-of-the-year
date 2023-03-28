@@ -5,10 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:replace="~{fragments :: head_links}">
     <title th:text="${movie.getTitle()}"></title>
 </head>
 <body>
-    <h1 th:text="${movie.getTitle()}"></h1>
-    <h2 th:text=" 'Questo film ha ID: ' + ${movie.getId()}"></h2>
+<nav th:replace="~{fragments :: navbar('singleMovie')}"></nav>
+<div class="h-100 pt-5">
+    <h1 th:text="${movie.getTitle()}" class="text-center mb-5 detail_title"></h1>
+    <h2 class="text-center mb-5"> Questo film ha ID: <span class="text-warning">[[${movie.getId()}]]</span></h2>
+    <button th:replace="~{fragments :: button(link = '/movies', content = 'Back to Movies')}"></button>
+</div>
+
 </body>
 </html>
